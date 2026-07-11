@@ -43,6 +43,16 @@ qt_add_shaders(blobby "blob_shaders"
         src/shaders/blob.vert
 )
 
+# Installation rules
+install(TARGETS blobby
+    LIBRARY DESTINATION lib/qt6/qml/Blobby
+    RUNTIME DESTINATION bin
+)
+
+install(FILES src/qmldir
+    DESTINATION lib/qt6/qml/Blobby
+)
+
 # Post-build hook: Deploy the library and qmldir to a local import folder
 add_custom_command(TARGET blobby POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/imports/Blobby
